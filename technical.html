@@ -37,7 +37,7 @@
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet" />
-    <link href="assets/css/careers.css" rel="stylesheet" />
+    <link href="assets/css/reg.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -54,81 +54,87 @@
           <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
         </div>
 
-
-        <!-- .navbar -->
-
-        <div class="header-social-links d-flex align-items-center">
-          <a href="#" class="instagram"><i class="bi bi-instagram mx-5"></i></a>
+        <!-- <div class="header-social-links d-flex align-items-center">
+          <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
           <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-        </div>
+        </div> -->
       </div>
     </header>
     <!-- End Header -->
 
     <main id="main">
-      <section id="careers">
-        <div class="container">
-          <div class="careers-box">
-            <div class="section-title">
-              <h2>Volunteer Team Call 2022</h2>
-            </div>
-            <div class="team">
-              <h3>Content Team</h3>
-              <div class="role">
-                <ul>
-                  <li>Prepare write ups and reports of events.</li>
-                </ul>
-              </div>
-              <a href="content.html" class="btn btn-primary apply"
-                >Apply For Content Team</a
-              >
-            </div>
-            <hr />
+      <section id="reg">
+        <div class="section-title">
+          <h2>Technical Team</h2>
+        </div>
 
-            <div class="team x">
-              <h3>Design Team</h3>
-              <div class="role">
-                <ul>
-                  <li>Designing posters and video editing.</li>
-                </ul>
-              </div>
-              <p></p>
-              <a href="design.html" class="btn btn-primary apply"
-                >Apply For Design Team</a
-              >
+        <div class="form-box">
+          <form autocomplete="off" method="post" name="google-sheet">
+            <div class="form-group input-box">
+              <label for="exampleInputEmail1">Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                required
+              />
             </div>
-            <hr />
-
-            <div class="team x">
-              <h3>Web Team</h3>
-              <div class="role">
-                <ul>
-                  <li>Maintaining IEEE SB GCEK Website.</li>
-                  <li>
-                    Creating new simple websites for events and any web related
-                    things.
-                  </li>
-                </ul>
-              </div>
-              <a href="web.html" class="btn btn-primary apply"
-                >Apply For Web Team</a
-              >
+            <div class="input-box">
+              <label for="exampleInputPassword1">Semester</label>
+              <select class="form-select" name="semester" required>
+                <option disabled selected hidden>--Select--</option>
+                <option value="S1">S1</option>
+                <option value="S3">S3</option>
+                <option value="S5">S5</option>
+              </select>
             </div>
-            <hr />
-
-            <div class="team x">
-              <h3>Technical Team</h3>
-              <div class="role">
-                <ul>
-                  <li>Event coordination.</li>
-                </ul>
-              </div>
-              <a href="technical.html" class="btn btn-primary apply"
-                >Apply For Technical Team</a
-              >
+            <div class="input-box">
+              <label>Branch</label>
+              <select class="form-select" name="branch" required>
+                <option disabled selected hidden>--Select--</option>
+                <option value="CSE">CSE</option>
+                <option value="EC A">EC A</option>
+                <option value="EC B">EC B</option>
+                <option value="EEE">EEE</option>
+                <option value="Civil">Civil</option>
+                <option value="Mech">Mech</option>
+              </select>
             </div>
-            <hr />
-          </div>
+            <div class="input-box">
+              <label>Email</label>
+              <input type="email" name="email" class="form-control" required />
+            </div>
+            <div class="input-box">
+              <label>Phone</label>
+              <input type="text" name="phone" class="form-control" required />
+            </div>
+            <div class="input-box">
+              <label for=""
+                >Mention Your Volunteering Experiences (If any)</label
+              >
+              <textarea
+                name="volunteeringExp"
+                id=""
+                cols="30"
+                rows="5"
+                class="form-control"
+              ></textarea>
+            </div>
+            <div class="input-box">
+              <label>IEEE Member ID</label>
+              <input
+                type="text"
+                name="memberId"
+                class="form-control"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary apply">Submit</button>
+          </form>
         </div>
       </section>
     </main>
@@ -164,6 +170,23 @@
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
       crossorigin="anonymous"
     ></script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbwPLGfr92dFAZKF89Xi_1I5E2Vr4VSYinL48DLVqy9ff1hNMzvR7YdYsytoD__kIzxl/exec";
+      const form = document.forms["google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, {
+          method: "POST",
+          body: new FormData(form),
+          mode: "no-cors",
+        })
+          .then((response) => (window.location.href = "success.html"))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>

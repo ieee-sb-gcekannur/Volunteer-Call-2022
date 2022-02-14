@@ -1,11 +1,11 @@
-window.addEventListener("load", () => {
-  AOS.init({
-    duration: 1000,
-    easing: "ease-in-out",
-    once: true,
-    mirror: false,
-  });
-});
+// window.addEventListener("load", () => {
+//   AOS.init({
+//     duration: 1000,
+//     easing: "ease-in-out",
+//     once: true,
+//     mirror: false,
+//   });
+// });
 
 (function () {
   "use strict";
@@ -256,4 +256,28 @@ window.addEventListener("load", () => {
   //     }
   //   }
   // });
+
+  document.getElementById("design").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      document.querySelector(".design").style.display = "block";
+    } else {
+      document.querySelector(".design").style.display = "none";
+    }
+  });
+
+  document.getElementById("technical").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      document.querySelector(".technical").style.display = "block";
+    } else {
+      document.querySelector(".technical").style.display = "none";
+    }
+  });
+
+  document.getElementById("web").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      document.querySelector(".web").style.display = "block";
+    } else {
+      document.querySelector(".web").style.display = "none";
+    }
+  });
 })();

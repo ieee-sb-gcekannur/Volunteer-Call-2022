@@ -1,6 +1,6 @@
 #careers {
   margin-top: 3rem;
-  background: #f6f6f6;
+  background: #E8F0F2;
 }
 
 #careers h2 {
@@ -14,6 +14,9 @@
 }
 
 #careers .team {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
   margin-bottom: 2.5rem;
 }
 
@@ -22,7 +25,7 @@
 }
 
 #careers .team.x h3 {
-  margin-top: 2.5rem;
+  margin-top: 1rem;
 }
 
 #careers .team h3 {

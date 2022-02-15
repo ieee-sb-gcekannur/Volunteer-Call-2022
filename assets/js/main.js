@@ -257,6 +257,14 @@
   //   }
   // });
 
+  document.getElementById("content").addEventListener("change", (e) => {
+    if (e.target.checked) {
+      document.querySelector(".content").style.display = "block";
+    } else {
+      document.querySelector(".content").style.display = "none";
+    }
+  });
+
   document.getElementById("design").addEventListener("change", (e) => {
     if (e.target.checked) {
       document.querySelector(".design").style.display = "block";

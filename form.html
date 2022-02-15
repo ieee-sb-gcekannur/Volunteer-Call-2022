@@ -281,7 +281,6 @@
       var form = document.querySelector("form");
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        document.getElementById("submit-btn").disabled = true;
         const init = async () => {
           const contentChecked = document.getElementById("content").checked;
           const designChecked = document.getElementById("design").checked;

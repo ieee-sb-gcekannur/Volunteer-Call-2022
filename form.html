@@ -189,14 +189,79 @@
             </div>
             <div class="design">
               <div class="input-box">
-                <label for="">Familiar Design Tools</label>
-                <textarea
-                  name="designSkills"
-                  id=""
-                  cols="30"
-                  rows="5"
-                  class="form-control"
-                ></textarea>
+                <label style="margin-bottom: 0.5rem"
+                  >Familiar Design Tools</label
+                >
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="designSkills"
+                    value="Adobe Photoshop"
+                  />
+                  <label class="form-check-label" for="content">
+                    Adobe Photoshop
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="designSkills"
+                    value="Adobe Illustrator"
+                  />
+                  <label class="form-check-label" for="design">
+                    Adobe Illustrator
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="designSkills"
+                    value="Canva"
+                  />
+                  <label class="form-check-label" for="technical">
+                    Canva
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="designSkills"
+                    value="Adobe Premiere Pro"
+                  />
+                  <label class="form-check-label" for="web"
+                    >Adobe Premiere Pro</label
+                  >
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="designSkills"
+                    value="Adobe After Effects"
+                  />
+                  <label class="form-check-label" for="web"
+                    >Adobe After Effects</label
+                  >
+                </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="designSkills"
+                    value="GIMP"
+                  />
+                  <label class="form-check-label" for="web">GIMP</label>
+                </div>
               </div>
               <div class="input-box">
                 <label for="">Google Drive Link Of Design Works (If any)</label>
@@ -298,11 +363,11 @@
               document.querySelector(
                 "form button"
               ).innerHTML = `<div class="lds-ring">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>`;
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>`;
               if (contentChecked) {
                 const scriptURL =
                   "https://script.google.com/macros/s/AKfycbz19vIvHkM14ZQdFnKpFpKXPJhbv_d5KWorAfgx4C5XOiy9soADGbdDmYww71iA3GIJ-A/exec";
@@ -316,10 +381,17 @@
               if (designChecked) {
                 const scriptURL =
                   "https://script.google.com/macros/s/AKfycbzGxs-yxL6MrtCI5vMCqJzX8TtUExdtnoPLuhFtdc_kLVgvloqg4S5I7qonFCNtNyW6zQ/exec";
+                const formData = new FormData(form);
+                let temp = "";
+                formData.delete("designSkills");
+                document.getElementsByName("designSkills").forEach((e) => {
+                  if (e.checked) temp += e.value + ", ";
+                });
+                formData.append("designSkills", temp);
 
                 await fetch(scriptURL, {
                   method: "POST",
-                  body: new FormData(form),
+                  body: formData,
                   mode: "no-cors",
                 });
               }
@@ -343,8 +415,6 @@
                   mode: "no-cors",
                 });
               }
-              document.querySelector("form button").disabled = false;
-              document.querySelector("form button").innerHTML = `Submit`;
               window.location.href = "success.html";
             } catch (error) {
               console.error("Error!", error);

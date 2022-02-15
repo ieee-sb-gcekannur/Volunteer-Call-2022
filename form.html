@@ -262,6 +262,24 @@
                   />
                   <label class="form-check-label" for="web">GIMP</label>
                 </div>
+
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="otherdesign"
+                    name="designSkills"
+                    value=""
+                  />
+                  <label class="form-check-label" for="web"
+                    >Other
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="otherdesigninput"
+                      disabled
+                  /></label>
+                </div>
               </div>
               <div class="input-box">
                 <label for="">Google Drive Link Of Design Works (If any)</label>
@@ -408,12 +426,22 @@
               if (webChecked) {
                 const scriptURL =
                   "https://script.google.com/macros/s/AKfycbxYqbnqNFUBXPfqms_dvY7PIHmkx-3RioIvmJSUaVy5SyLsfARy1-R5NZbveqww4C4ZCw/exec";
-
-                await fetch(scriptURL, {
-                  method: "POST",
-                  body: new FormData(form),
-                  mode: "no-cors",
-                });
+                const formData = new FormData(form);
+                if (
+                  formData.get("github") != "" &&
+                  formData.get("webSkills") != ""
+                ) {
+                  await fetch(scriptURL, {
+                    method: "POST",
+                    body: formData,
+                    mode: "no-cors",
+                  });
+                } else {
+                  alert("Github profile and Skills are required fields");
+                  document.querySelector("form button").disabled = false;
+                  document.querySelector("form button").innerHTML = `Submit`;
+                  return;
+                }
               }
               window.location.href = "success.html";
             } catch (error) {
@@ -427,6 +455,21 @@
           }
         };
         init();
+      });
+
+      document
+        .getElementById("otherdesigninput")
+        .addEventListener("change", (e) => {
+          document.getElementById("otherdesign").value = e.target.value;
+          console.log(e.target.value);
+        });
+
+      document.getElementById("otherdesign").addEventListener("change", (e) => {
+        if (e.target.checked) {
+          document.getElementById("otherdesigninput").disabled = false;
+        } else {
+          document.getElementById("otherdesigninput").disabled = true;
+        }
       });
     </script>
 

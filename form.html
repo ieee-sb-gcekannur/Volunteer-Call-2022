@@ -295,6 +295,15 @@
             webChecked
           ) {
             try {
+              document.querySelector("form button").disabled = true;
+              document.querySelector(
+                "form button"
+              ).innerHTML = `<div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>`;
               if (contentChecked) {
                 const scriptURL =
                   "https://script.google.com/macros/s/AKfycbz19vIvHkM14ZQdFnKpFpKXPJhbv_d5KWorAfgx4C5XOiy9soADGbdDmYww71iA3GIJ-A/exec";
@@ -335,9 +344,14 @@
                   mode: "no-cors",
                 });
               }
+              document.querySelector("form button").disabled = false;
+              document.querySelector("form button").innerHTML = `Submit`;
               window.location.href = "success.html";
             } catch (error) {
               console.error("Error!", error);
+              alert("Something went wrong");
+              document.querySelector("form button").disabled = false;
+              document.querySelector("form button").innerHTML = `Submit`;
             }
           } else {
             alert("Please select at least one team");

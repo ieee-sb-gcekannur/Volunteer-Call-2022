@@ -113,20 +113,39 @@
               <input type="text" name="phone" class="form-control" required />
             </div>
             <div class="input-box">
-              <label>Team</label>
-              <br />
-              <input type="checkbox" id="content" />
-              Content Team
-              <br />
-              <input type="checkbox" id="design" />
-              Design
-              <br />
-              <input type="checkbox" id="technical" />
-              Technical Team
-              <br />
-              <input type="checkbox" id="web" /> Web Team
-              <br />
+              <label style="margin-bottom: 0.5rem">Team(s)</label>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="content" />
+                <label class="form-check-label" for="content">
+                  Content Team
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="design" />
+                <label class="form-check-label" for="design">
+                  Design Team
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="technical"
+                />
+                <label class="form-check-label" for="technical">
+                  Technical Team
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="web" />
+                <label class="form-check-label" for="web">Web Team </label>
+              </div>
             </div>
+
             <div class="web">
               <div class="input-box">
                 <label for="">GitHub Profile</label>
@@ -198,7 +217,11 @@
                 required
               />
             </div>
-            <button type="submit" class="btn btn-primary apply">Submit</button>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary apply">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </section>
